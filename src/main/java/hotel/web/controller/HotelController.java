@@ -31,7 +31,7 @@ public class HotelController extends HttpServlet {
     @EJB
     private HotelFacade hotelService;
      
-    private static final String RESULT_PAGE = "/home.jsp";
+    private static final String RESULT_PAGE = "/user/home.jsp";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

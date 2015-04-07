@@ -9,6 +9,8 @@ import hotel.web.model.Hotel;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -16,6 +18,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class HotelFacade extends AbstractFacade<Hotel> {
+    private static final Logger LOG = LoggerFactory.getLogger(HotelFacade.class);
     @PersistenceContext(unitName = "hotelPU")
     private EntityManager em;
 

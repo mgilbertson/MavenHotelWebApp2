@@ -7,6 +7,8 @@ package hotel.web.ejb;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -14,6 +16,7 @@ import javax.persistence.EntityManager;
  * @param <T>
  */
 public abstract class AbstractFacade<T> {
+    private static final Logger LOG = LoggerFactory.getLogger(AbstractFacade.class);
     private Class<T> entityClass;
 
     public AbstractFacade(Class<T> entityClass) {
@@ -39,8 +42,10 @@ public abstract class AbstractFacade<T> {
     }
 
     public List<T> findAll() {
+        LOG.debug("finding all hotels");
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
+        LOG.debug("Found %d hotels", getEntityManager().createQuery(cq).getResultList().size());
         return getEntityManager().createQuery(cq).getResultList();
     }
 
